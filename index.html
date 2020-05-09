@@ -1,0 +1,117 @@
+<!--
+ * @description ：
+ * @author :小吴
+ * @create :2020-05-08 20:33:00
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <title>HexConversion.html</title>
+  <style>
+    body{
+      font-size: 17px;
+      font-weight: 700;
+      color: darkcyan;
+    }
+    #select{
+      font-size: 17px;
+      font-weight: 700;
+      color: darkcyan;
+    }
+    #button{
+      font-size: 17px;
+      font-weight: 700;
+      color: darkcyan;
+    }
+    input{
+      font-size: 15px;
+      font-weight: 700;
+      border: darkcyan 2px solid;
+    }
+  </style>
+</head>
+<body>
+<table width="350px" style="height: 200px" >
+  <tr>
+    <td><select id="select">
+      <option value="2">二进制</option>
+      <option value="8">八进制</option>
+      <option value="10">十进制</option>
+      <option value="16">十六进制</option>
+    </select>
+    </td>
+    <td><input type="text" id="shuru"></td>
+    <td><button id="button">转换</button></td>
+  </tr>
+  <tr>
+    <td>二进制：</td>
+    <td><input type="text" id="er"></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>八进制：</td>
+    <td><input type="text" id="ba"></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>十进制：</td>
+    <td><input type="text" id="shi"></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>十六进制：</td>
+    <td><input type="text" id="shiliu"></td>
+    <td></td>
+  </tr>
+</table>
+<img src="//img95.699pic.com/photo/40042/6247.jpg_wh300.jpg" style="width: 350px; height: 200px">
+</body>
+<script type="text/javascript">
+  let size = $("select").value;
+  let shuru = null;
+  function $(id){
+    return document.getElementById(id);
+  }
+  $("select").onchange = () => {
+    size = $("select").value;
+  }
+
+  $("button").onclick = () => {
+
+    switch (size) {
+      case "2":
+        shuru = $("shuru").value;
+        $("er").value = shuru;
+        $("ba").value = parseInt(shuru , 2).toString(8);
+        $("shi").value = parseInt(shuru , 2);
+        $("shiliu").value = parseInt(shuru, 2).toString(16);
+        break;
+      case "8":
+        shuru = $("shuru").value;
+        $("er").value = parseInt(shuru , 8).toString(2);
+        $("ba").value = shuru;
+        $("shi").value = parseInt(shuru , 8).toString(10);
+        $("shiliu").value = parseInt(shuru , 8).toString(16);
+        break;
+      case "10":
+        shuru = parseInt($("shuru").value);
+        $("er").value = shuru.toString(2);
+        $("ba").value = shuru.toString(8);
+        $("shi").value = shuru;
+        $("shiliu").value = shuru.toString(16);
+        break;
+      case "16":
+        shuru = $("shuru").value;
+        console.log(shuru);
+        $("er").value = parseInt(shuru , 16).toString(2);
+        $("ba").value = parseInt(shuru , 16).toString(8);
+        $("shi").value = parseInt(shuru , 16).toString(10);
+        $("shiliu").value =shuru ;
+        break;
+    }
+  }
+</script>
+</html>
